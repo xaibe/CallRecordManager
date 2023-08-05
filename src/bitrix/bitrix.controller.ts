@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { BitrixService } from './bitrix.service';
 import { CreateBitrixDto } from './dto/create-bitrix.dto';
-import { UpdateBitrixDto } from './dto/update-bitrix.dto';
 
 @Controller('bitrix')
 export class BitrixController {
@@ -30,10 +29,6 @@ async handleWebhook(
     return this.bitrixService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBitrixDto: UpdateBitrixDto) {
-    return this.bitrixService.update(+id, updateBitrixDto);
-  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
